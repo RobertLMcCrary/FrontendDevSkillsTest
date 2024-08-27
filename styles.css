@@ -71,6 +71,9 @@ nav {
     padding-right: 30px;
     border-radius: 16px;
     background-color: #FFFFFF;
+    height: 80vh;
+    overflow: hidden;
+    overflow-y: auto;
 }
 
 .sidebar,h1 {
@@ -82,12 +85,58 @@ nav {
 }
 
 .patient-data {
+    display: flex;
+    flex-direction: column;
     width: 367px;
+    gap: 32px;
 }
 
+
+
+.patient-list {
+    background-color: #FFFFFF;
+    margin-bottom: 18px;
+    height: 1054px;
+    overflow: hidden;
+}
+
+.patient-card {
+    list-style: none;
+    text-decoration: none;
+}
+
+.patient-card-name {
+    font-size: 14px;
+}
+
+.patient-list-data {
+    font-size: 14px;
+}
+
+
 .patient-profile {
-    align-items: center;
+    align-items: left;
+    text-align: left;
     width: 367px;
     border-radius: 16px;
     background-color: #FFFFFF;
+    padding: 20px;
 }
+
+.patient-profile-card {
+    text-align: left;
+    align-items: left;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.lab-results {
+    width: 367px;
+    border-radius: 16px;
+    background-color: #FFFFFF;
+    padding: 20px;
+    overflow: hidden;
+    overflow-y: auto;
+}
+

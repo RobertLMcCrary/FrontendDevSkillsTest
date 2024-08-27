@@ -54,7 +54,9 @@
     <div class="dashboard">
         <div class="sidebar">
             <h1>Patients</h1>
-            
+            <ul class="patient-list" id="patient-list">
+                
+            </ul>
         </div>
 
         <div class="diagnosis">
@@ -63,10 +65,52 @@
 
         <div class="patient-data">
             <div class="patient-profile">
-                <img id="patient-picture" />
                 <h1 id="patient-name"></h1>
-                <ul id="diagnosis-history"></ul>
-                <ul id="lab-results"></ul>
+                <div id="patient-profile-data" class="patient-profile-data">
+                    <div class="patient-profile-card">
+                        <img src="images/BirthIcon.svg" />
+                        <div>
+                            <p>Date Of Birth</p>
+                            <strong id="patient-profile-dob"></strong>
+                        </div>
+                    </div>
+
+                    <div class="patient-profile-card">
+                        <img src="images/FemaleIcon.svg" />
+                        <div>
+                            <p>Gender</p>
+                            <strong id="patient-profile-gender"></strong>
+                        </div>
+                    </div>
+
+                    <div class="patient-profile-card">
+                        <img src="images/PhoneIcon.svg" />
+                        <div>
+                            <p>Contact Info.</p>
+                            <strong id="patient-profile-contact"></strong>
+                        </div>
+                    </div>
+
+                    <div class="patient-profile-card">
+                        <img src="images/PhoneIcon.svg" />
+                        <div>
+                            <p>Emergency Contact</p>
+                            <strong id="patient-profile-emergency-contact"></strong>
+                        </div>
+                    </div>
+
+                    <div class="patient-profile-card">
+                        <img src="images/InsuranceIcon.svg" />
+                        <div>
+                            <p>Insurance Provider</p>
+                            <strong id="patient-profile-insurance"></strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lab-results">
+                <h1>Lab Results</h1>
             </div>
         </div>
     </div>

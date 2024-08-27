@@ -6,6 +6,7 @@ const password = 'skills-test'
 const credentials = `${username}:${password}`
 const encodedCredentials = btoa(credentials)
 
+//fetch the data from the API
 async function fetchPatientData() {
     try {
         const response = await fetch(url, {
@@ -27,6 +28,7 @@ async function fetchPatientData() {
             console.log('Patient Data:', patient);
             console.log('All Patients:', data)
             displayPatientData(patient)
+            fillPatientList(data)
         } else {
             console.log('Jessica Taylor not found');
         }
@@ -36,26 +38,52 @@ async function fetchPatientData() {
     }
 }
 
+//adding the data into the HTML
 function displayPatientData(patient) {
-    
     document.getElementById('patient-name').textContent = patient.name
-    document.getElementById('patient-age').textContent = patient.age
+    document.getElementById('patient-profile-dob').textContent = patient.date_of_birth
+    document.getElementById('patient-profile-gender').textContent = patient.gender
+    document.getElementById('patient-profile-contact').textContent = patient.phone_number
+    document.getElementById('patient-profile-emergency-contact').textContent = patient.emergency_contact
+    document.getElementById('patient-profile-insurance').textContent = patient.insurance_type
 
-    const diagnosisList = document.getElementById('diagnosis-history');
-    diagnosisList.innerHTML = ''; 
-    patient.diagnosisHistory.forEach(diagnosis => {
-        const listItem = document.createElement('li');
-        listItem.textContent = `${diagnosis.date}: ${diagnosis.description}`;
-        diagnosisList.appendChild(listItem);
-    });
+    const labResults = document.querySelector('.lab-results')
+    labResults.innerHTML = '<h1>Lab Results</h1>';
 
-    const labResultsList = document.getElementById('lab-results');
-    labResultsList.innerHTML = ''; 
-    patient.labResults.forEach(result => {
-        const listItem = document.createElement('li');
-        listItem.textContent = `${result.testName}: ${result.value} ${result.unit}`;
-        labResultsList.appendChild(listItem);
+    patient.lab_results.forEach(result => {
+        const listItem = document.createElement('p');
+        listItem.textContent = result;
+        labResults.appendChild(listItem);
     });
+}
+
+//filling the sidebar patient list
+function fillPatientList(patients) {
+    const patientList = document.getElementById('patient-list')
+    patientList.innerHTML = '';
+
+    patients.forEach(patient => {
+        const card = document.createElement('li')
+        card.classList.add('patient-card')
+
+        const cardData = document.createElement('div')
+        cardData.classList.add('patient-card-data')
+
+        const cardName = document.createElement('h3')
+        cardName.classList.add('patient-card-name')
+        cardName.textContent = patient.name
+
+        const patientInfo = document.createElement('p')
+        patientInfo.classList.add('patient-list-data')
+        patientInfo.id = 'patient-list-data';
+        patientInfo.textContent = `Gender: ${patient.gender}, Age: ${patient.age}`;
+
+        cardData.appendChild(cardName)
+        cardData.appendChild(patientInfo)
+        card.appendChild(cardData)
+
+        patientList.appendChild(card)
+    })
 }
 
 fetchPatientData()
