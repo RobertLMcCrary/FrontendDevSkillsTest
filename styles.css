@@ -1,0 +1,93 @@
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: Manrope;
+    background-color: #F6F7F8;
+}
+
+nav {
+    height: 72px;
+    margin: 18px;
+    display: flex;
+    padding: 14px 20px;
+    border-radius: 70px;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #FFFFFF;
+}
+
+.nav-item {
+    display: flex;
+    gap: 10px;
+}
+
+.nav-item:hover {
+    cursor: pointer;
+}
+
+.patients-button {
+    display: flex;
+    padding: 5px 20px;
+    border-radius: 50px;
+    border: none;
+    background-color: #01F0D0;
+    justify-content: center;
+    align-items: center;
+}
+
+.patients-button:hover {
+    cursor: pointer;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.profile-image {
+    width: 60px;
+    height: 60px;
+}
+
+.settings {
+    gap: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard {
+    margin: 18px;
+    display: flex;
+    gap: 33px;
+}
+
+.sidebar {
+    padding-left: 20px;
+    padding-right: 30px;
+    border-radius: 16px;
+    background-color: #FFFFFF;
+}
+
+.sidebar,h1 {
+    font-size: 24px;
+}
+
+.diagnosis {
+    width: 766px;
+}
+
+.patient-data {
+    width: 367px;
+}
+
+.patient-profile {
+    align-items: center;
+    width: 367px;
+    border-radius: 16px;
+    background-color: #FFFFFF;
+}
