@@ -25,16 +25,17 @@ async function fetchPatientData() {
         const patient = data.find(patient => patient.name === 'Jessica Taylor')
 
         if (patient) {
-            console.log('Patient Data:', patient);
+            console.log('Patient Data:', patient)
             console.log('All Patients:', data)
             displayPatientData(patient)
             fillPatientList(data)
+            showDiagnosticList(patient)
         } else {
-            console.log('Jessica Taylor not found');
+            console.log('Jessica Taylor not found')
         }
     }
     catch (error) {
-        console.error('Error fetching data:', error);
+        console.error('Error fetching data:', error)
     }
 }
 
@@ -51,10 +52,43 @@ function displayPatientData(patient) {
     labResults.innerHTML = '<h1>Lab Results</h1>';
 
     patient.lab_results.forEach(result => {
-        const listItem = document.createElement('p');
-        listItem.textContent = result;
-        labResults.appendChild(listItem);
+        const listItem = document.createElement('p')
+        listItem.textContent = result
+        labResults.appendChild(listItem)
     });
+}
+
+function showDiagnosticList(patient) {
+    const diagnosticList = document.querySelector('.diagnostic-list')
+    diagnosticList.innerHTML = `
+        <h1>Diagnostic List</h1>
+        <div class="top-card">
+            <strong>Problem/Diagnosis</strong>
+            <strong>Description</strong>
+            <strong>Status</strong>
+        </div>
+    `
+
+    console.log(patient.diagnostic_list)
+
+    patient.diagnostic_list.forEach(result => {
+        const listItem = document.createElement('div')
+        listItem.classList.add('diagnostic-history-card')
+
+        const diagnosticName = document.createElement('p')
+        diagnosticName.textContent = result.name
+        listItem.appendChild(diagnosticName)
+
+        const diagnosticDescription = document.createElement('p')
+        diagnosticDescription.textContent = result.description
+        listItem.appendChild(diagnosticDescription)
+
+        const diagnosticStatus = document.createElement('p')
+        diagnosticStatus.textContent = result.status
+        listItem.appendChild(diagnosticStatus)
+
+        diagnosticList.appendChild(listItem)
+    })
 }
 
 //filling the sidebar patient list
@@ -85,5 +119,7 @@ function fillPatientList(patients) {
         patientList.appendChild(card)
     })
 }
+
+
 
 fetchPatientData()

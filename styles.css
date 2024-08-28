@@ -67,11 +67,12 @@ nav {
 }
 
 .sidebar {
+    width: 15vw;
     padding-left: 20px;
     padding-right: 30px;
     border-radius: 16px;
     background-color: #FFFFFF;
-    height: 80vh;
+    height: 82vh;
     overflow: hidden;
     overflow-y: auto;
 }
@@ -80,9 +81,43 @@ nav {
     font-size: 24px;
 }
 
-.diagnosis {
-    width: 766px;
+.graph-area {
+    width: 53vw;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
+
+.diagnosis-history {
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 16px;
+}
+
+.diagnostic-list {
+    border-radius: 16px;
+    background-color: #FFFFFF;
+    padding: 20px;
+    overflow: hidden;
+    overflow-y: auto;
+    height: 20vh;
+}
+
+.top-card {
+    display: flex;
+    justify-content: space-between;
+    background-color: #F6F7F8;
+    padding: 20px;
+    border-radius: 24px;
+}
+
+.diagnostic-history-card {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 24px;
+}
+
 
 .patient-data {
     display: flex;
@@ -133,10 +168,13 @@ nav {
 
 .lab-results {
     width: 367px;
+    height: 2;
     border-radius: 16px;
     background-color: #FFFFFF;
     padding: 20px;
     overflow: hidden;
     overflow-y: auto;
 }
+
+
 

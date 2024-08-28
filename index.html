@@ -39,7 +39,8 @@
             <h3>Transactions</h3>
         </div>
         <div class="profile">
-            <img class="profile-image" src="images/senior-woman-doctor-and-portrait-smile-for-health-2023-11-27-05-18-16-utc@2x.png" />
+            <img class="profile-image"
+                src="images/senior-woman-doctor-and-portrait-smile-for-health-2023-11-27-05-18-16-utc@2x.png" />
             <div class="profile-name">
                 <h3>Dr. Jose Simmons</h3>
                 <p>General Practitioner</p>
@@ -55,12 +56,135 @@
         <div class="sidebar">
             <h1>Patients</h1>
             <ul class="patient-list" id="patient-list">
-                
+
             </ul>
         </div>
 
-        <div class="diagnosis">
+        <div class="graph-area">
+            <div class="diagnosis-history">
+                <h1>Diagnosis History</h1>
 
+                <canvas id="blood-pressure-chart"></canvas>
+
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+                <script>
+                    //creating the chart with chart.js
+                    const patientData = [
+                        {
+                            "name": "Jessica Taylor",
+                            "gender": "Female",
+                            "age": 28,
+                            "profile_picture": "https://fedskillstest.ct.digital/4.png",
+                            "date_of_birth": "1996-08-23",
+                            "phone_number": "(415) 555-1234",
+                            "emergency_contact": "(415) 555-5678",
+                            "insurance_type": "Sunrise Health Assurance",
+                            "diagnosis_history": [
+                                {
+                                    "month": "March",
+                                    "year": 2024,
+                                    "blood_pressure": {
+                                        "systolic": {
+                                            "value": 160,
+                                            "levels": "Higher than Average"
+                                        },
+                                        "diastolic": {
+                                            "value": 78,
+                                            "levels": "Lower than Average"
+                                        }
+                                    },
+                                    "heart_rate": {
+                                        "value": 78,
+                                        "levels": "Lower than Average"
+                                    },
+                                    "respiratory_rate": {
+                                        "value": 20,
+                                        "levels": "Normal"
+                                    },
+                                    "temperature": {
+                                        "value": 98.6,
+                                        "levels": "Normal"
+                                    }
+                                },
+                            ],
+                            "diagnostic_list": [
+                                {
+                                    "name": "Hypertension",
+                                    "description": "Chronic high blood pressure",
+                                    "status": "Under Observation"
+                                }
+                                // Additional diagnostics
+                            ],
+                            "lab_results": [
+                                "Blood Tests",
+                                "CT Scans"
+                                // More lab results
+                            ]
+                        }
+                    ];
+
+                    const labels = patientData[0].diagnosis_history.map(d => `${d.month}, ${d.year}`)
+                    const systolicData = patientData[0].diagnosis_history.map(d => d.blood_pressure.systolic.value)
+                    const diastolicData = patientData[0].diagnosis_history.map(d => d.blood_pressure.diastolic.value)
+
+                    const data = {
+                        labels: labels,
+                        datasets: [
+                            {
+                                label: 'Systolic Pressure',
+                                data: systolicData,
+                                borderColor: 'rgb(255, 99, 132)',
+                                backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                                fill: false,
+                            },
+                            {
+                                label: 'Diastolic Pressure',
+                                data: diastolicData,
+                                borderColor: 'rgb(54, 162, 235)',
+                                backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                                fill: false,
+                            }
+                        ]
+                    };
+
+                    const config = {
+                        type: 'line',
+                        data: data,
+                        options: {
+                            responsive: true,
+                            scales: {
+                                x: {
+                                    title: {
+                                        display: true,
+                                        text: 'Date'
+                                    }
+                                },
+                                y: {
+                                    title: {
+                                        display: true,
+                                        text: 'Blood Pressure'
+                                    },
+                                    suggestedMin: 60,
+                                    suggestedMax: 180
+                                }
+                            }
+                        }
+                    };
+
+                    // Render the chart
+                    const ctx = document.getElementById('blood-pressure-chart').getContext('2d');
+                    const bloodPressureChart = new Chart(ctx, config);
+
+
+                </script>
+            </div>
+
+            <div class="diagnostic-list">
+                <h1>Diagnostic List</h1>
+                
+
+            </div>
         </div>
 
         <div class="patient-data">
